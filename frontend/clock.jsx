@@ -28,7 +28,7 @@ class Clock extends React.Component {
 	render () {
 		return (
 			<div>
-				<h2>Clock Widget</h2>
+				<h2>Clock</h2>
 				<span>{this.state.date.toLocaleTimeString()}</span>
 			</div>
 		);
