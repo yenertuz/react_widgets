@@ -308,41 +308,58 @@ function (_React$Component) {
     };
     _this.changeInput = _this.changeInput.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.getResponse = _this.getResponse.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.updateResponse = _this.updateResponse.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(Weather, [{
     key: "getResponse",
     value: function getResponse(input) {
-      test = fetch("http://www.google.com").then(function (res) {
-        return res.json();
-      }).then(function (data) {
-        return alert(data);
+      var ajax = new XMLHttpRequest();
+      var queryObject = {
+        // q: input,
+        appid: "5db9a5e9ab33cbbd37f2aaea7432d644"
+      };
+
+      if ("0123456789".includes(input[0])) {
+        queryObject.zip = input;
+      } else {
+        queryObject.q = input;
+      }
+
+      var queryString = Object.keys(queryObject).map(function (key) {
+        return encodeURIComponent(key) + "=" + encodeURIComponent(queryObject[key]);
+      }).join("&");
+      var ajaxURL = "http://api.openweathermap.org/data/2.5/weather?" + queryString;
+      ajax.open("GET", ajaxURL, false);
+      ajax.send();
+      return ajax.responseText;
+    }
+  }, {
+    key: "updateResponse",
+    value: function updateResponse() {
+      var input = this.state.input;
+      this.setState({
+        response: this.getResponse(input)
       });
-      return "foo";
     }
   }, {
     key: "changeInput",
     value: function changeInput(e) {
       this.setState({
-        input: e.target.value,
-        response: this.getResponse(e.target.value)
+        input: e.target.value
       });
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(this.updateResponse, 2000);
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Weather"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.changeInput,
         placeHolder: "Enter zip or city"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          alert(_this2.state.input);
-        }
-      }, "Debug"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.response));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.response));
     }
   }]);
 

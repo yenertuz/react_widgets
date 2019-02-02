@@ -12,22 +12,49 @@ class Weather extends React.Component {
 
 		this.changeInput = this.changeInput.bind(this);
 		this.getResponse = this.getResponse.bind(this);
+		this.updateResponse = this.updateResponse.bind(this);
 	}
 
 	getResponse(input) {
-		test = fetch("http://www.google.com")
-			.then(res => res.json())
-			.then(data => alert(data));
-		return ("foo");
+		var ajax = new XMLHttpRequest();
+		var queryObject = {
+			// q: input,
+			appid: "5db9a5e9ab33cbbd37f2aaea7432d644"
+		};
+		if ("0123456789".includes(input[0])) {
+			queryObject.zip = input;
+		}
+		else {
+			queryObject.q = input;
+		}
+		var queryString = Object.keys(queryObject).map(
+			(key) => {
+				return encodeURIComponent(key) + "=" + encodeURIComponent(queryObject[key])
+			}).join("&");
+		var ajaxURL = "http://api.openweathermap.org/data/2.5/weather?" + queryString
+		ajax.open("GET", ajaxURL, false);
+		ajax.send();
+		return (ajax.responseText);
+	}
+
+	updateResponse() {
+		const input = this.state.input;
+		this.setState(
+			{
+				response: this.getResponse(input)
+			}
+		);
 	}
 
 	changeInput(e) {
 		this.setState(
 			{
-				input: e.target.value,
-				response: this.getResponse(e.target.value)
+				input: e.target.value
 			}
 		);
+
+		clearTimeout(this.timeout);
+		this.timeout = setTimeout(this.updateResponse, 2000);
 	}
 
 	render () {
@@ -37,8 +64,6 @@ class Weather extends React.Component {
 				<h2>Weather</h2>
 				<input type="text" onChange={this.changeInput} placeHolder="Enter zip or city"></input>
 				<br /> <br />
-				<button onClick={() => { alert(this.state.input); }}>Debug</button>
-				<br /><br />
 				<div>{this.state.response}</div>
 			</div>
 		);
