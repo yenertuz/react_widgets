@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Clock from "./frontend/clock";
 import Tabs from "./frontend/tabs";
+import Weather from "./frontend/weather";
 
 class Root extends React.Component {
 	constructor(props) {
@@ -23,6 +24,7 @@ class Root extends React.Component {
 				<br /><hr></hr>
 				<Tabs tabs={tabs}/>
 				<br /><hr></hr>
+				<Weather />
 			</div>
 		);
 	}
