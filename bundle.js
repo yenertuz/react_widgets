@@ -330,7 +330,7 @@ function (_React$Component) {
       var queryString = Object.keys(queryObject).map(function (key) {
         return encodeURIComponent(key) + "=" + encodeURIComponent(queryObject[key]);
       }).join("&");
-      var ajaxURL = "http://api.openweathermap.org/data/2.5/weather?" + queryString;
+      var ajaxURL = "https://api.openweathermap.org/data/2.5/weather?" + queryString;
       ajax.open("GET", ajaxURL, false);
       ajax.send();
       return ajax.responseText;
