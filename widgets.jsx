@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Clock from './frontend/clock';
 
 class Root extends React.Component {
     render() {
         return (
-            <div>Hello World</div>
+            <div>Widgets
+                <br />
+                <Clock />
+
+            </div>
         );
     }
 }
