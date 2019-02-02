@@ -1,43 +1,39 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class Clock extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            time: new Date()
-        };
-        this.tick = this.tick.bind(this);
-    }
+	constructor(props) {
+		super(props);
+		this.state = {
+			date: new Date()
+		};
 
-    tick() {
-        this.setState(
-            {
-                time: new Date()
-            }
-        );
-    }
+		this.tick = this.tick.bind(this);
+	}
 
-    componentDidMount()
-    {
-        this.interval = setInterval(this.tick, 1000);
-    }
+	componentDidMount() {
+		this.interval = setInterval(this.tick, 1000);
+	}
 
-    componentWillUnmount()
-    {
-        clearInterval(this.interval);
-    }
+	componentWillUnmunt() {
+		clearInterval(this.interval);
+	}
 
-    render () {
-        return (
-        <div>
-        <h1>Clock</h1>
-        <span className="time">{this.state.time.toLocaleTimeString()}</span>
-        </div>
-        );
-    }
+	tick() {
+		this.setState({
+			date: new Date()
+		});
+	}
+
+	render () {
+		return (
+			<div>
+				<h2>Clock Widget</h2>
+				<span>{this.state.date.toLocaleTimeString()}</span>
+			</div>
+		);
+	}
 
 }
 
-export default Clock;
+export default Clock ;

@@ -1,20 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Clock from './frontend/clock';
+import Clock from "./frontend/clock";
+import Tabs from "./frontend/tabs";
 
 class Root extends React.Component {
-    render() {
-        return (
-            <div>Widgets
-                <br />
-                <Clock />
+	constructor(props) {
+		super(props);
+	}
 
-            </div>
-        );
-    }
+	render () {
+
+		const tabs = [
+			{title: "shopping list", content: "bananas, cereal, milk, bacon"},
+			{title: "best horror movies", content: "get out, the wailing, the witch"}
+		]
+
+		return (
+			<div>
+				<h1>React Widgets</h1>
+				<hr></hr>
+				<Clock />
+				<br /><hr></hr>
+				<Tabs tabs={tabs}/>
+				<br /><hr></hr>
+			</div>
+		);
+	}
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const root = document.getElementById("root");
-    ReactDOM.render(<Root/>, root);
-})
+  const root = document.getElementById("root");
+  ReactDOM.render(<Root/>, root);
+});
