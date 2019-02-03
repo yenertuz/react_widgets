@@ -39,9 +39,18 @@ class Weather extends React.Component {
 
 	updateResponse() {
 		const input = this.state.input;
+		const preprocessed = JSON.parse(this.getResponse(input));
+		if (preprocessed.message == "city not found")
+			var newResponse = "Invalid city or zip";
+		else
+			var newResponse = <span>
+				{preprocessed.name} <br />
+				{preprocessed.weather[0].main} <br />
+				{parseInt(preprocessed.main.temp) - 273} C
+			</span>;
 		this.setState(
 			{
-				response: this.getResponse(input)
+				response: newResponse
 			}
 		);
 	}
@@ -54,7 +63,7 @@ class Weather extends React.Component {
 		);
 
 		clearTimeout(this.timeout);
-		this.timeout = setTimeout(this.updateResponse, 2000);
+		this.timeout = setTimeout(this.updateResponse, 1000);
 	}
 
 	render () {

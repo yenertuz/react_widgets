@@ -339,8 +339,10 @@ function (_React$Component) {
     key: "updateResponse",
     value: function updateResponse() {
       var input = this.state.input;
+      var preprocessed = JSON.parse(this.getResponse(input));
+      if (preprocessed.message == "city not found") var newResponse = "Invalid city or zip";else var newResponse = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, preprocessed.name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), preprocessed.weather[0].main, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), parseInt(preprocessed.main.temp) - 273, " C");
       this.setState({
-        response: this.getResponse(input)
+        response: newResponse
       });
     }
   }, {
@@ -350,7 +352,7 @@ function (_React$Component) {
         input: e.target.value
       });
       clearTimeout(this.timeout);
-      this.timeout = setTimeout(this.updateResponse, 2000);
+      this.timeout = setTimeout(this.updateResponse, 1000);
     }
   }, {
     key: "render",
