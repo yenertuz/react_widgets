@@ -22,6 +22,7 @@ hr:hover {
 input[type=text] {
 	text-align: center;
 	width: 30%;
+	min-width: 300px;
 }
 
 ul.ul-contacts {
