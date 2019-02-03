@@ -231,7 +231,14 @@ function (_React$Component) {
       var _this2 = this;
 
       var tabsString = this.props.tabs.map(function (data, index) {
+        if (index == _this2.state.index) {
+          var classNaam = "selected-tab";
+        } else {
+          var classNaam = "non-selected-tab";
+        }
+
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: classNaam,
           key: index,
           id: index,
           onClick: function onClick(e) {
@@ -239,7 +246,7 @@ function (_React$Component) {
           }
         }, data.title);
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, tabsString);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, tabsString);
     }
   }, {
     key: "content",

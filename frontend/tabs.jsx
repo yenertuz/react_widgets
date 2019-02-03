@@ -25,13 +25,26 @@ class Tabs extends React.Component {
 	titles() {
 
 		const tabsString = this.props.tabs.map(
-			(data, index) => <li key={index} id={index} onClick={(e) => {this.updateTab(e, index)}}>{data.title}</li>
+			(data, index) => 
+			{
+				if (index == this.state.index)
+				{
+					var classNaam = "selected-tab";
+				}
+				else
+				{
+					var classNaam = "non-selected-tab";
+				}
+			return (
+			<li className={classNaam} key={index} id={index} onClick={(e) => {this.updateTab(e, index)}}>{data.title}</li>
+			);
+			}
 		);
 
 		return (
-			<div>
+			<ul>
 			{tabsString}
-			</div>
+			</ul>
 		);
 	}
 

@@ -2,3 +2,34 @@ body {
 	font-family: sans-serif;
 	text-align: center;
 }
+
+ul {
+	list-style-type: none;
+	display: flex;
+	width: 67%;
+	border: 1px solid black;
+	padding: 0px;
+	flex-direction: row;
+	margin: auto;
+}
+
+ul:hover {
+	border: 2px solid darkblue;
+}
+
+ul > li {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	flex-grow: 1;
+}
+
+ul > li:hover {
+	background-color: lightblue;
+	color: darkblue;
+	cursor: pointer;
+}
+
+.selected-tab {
+	font-weight: bold;
+	background-color: lightgray;
+}
