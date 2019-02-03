@@ -42,7 +42,7 @@ class Tabs extends React.Component {
 		);
 
 		return (
-			<ul>
+			<ul className="ul-tabs">
 			{tabsString}
 			</ul>
 		);
@@ -60,9 +60,8 @@ class Tabs extends React.Component {
 		return (
 			<div>
 				<h2>Tabs</h2>
-				<h4>Titles</h4>
 				{this.titles()}
-				<h4>Content</h4>
+				<br /><br />
 				{this.content()}
 			</div>
 		)

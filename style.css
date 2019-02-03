@@ -3,27 +3,65 @@ body {
 	text-align: center;
 }
 
-ul {
+h1:hover, h2:hover, h4:hover {
+	color: orange;
+}
+
+hr {
+	border-top: 1px solid black;
+}
+
+hr:hover {
+	border-top: 1px solid orange;
+}
+
+input[type=text] {
+	text-align: center;
+	width: 30%;
+}
+
+ul.ul-contacts {
+	list-style-type: square;
+	width: 15%;
+	margin: auto;
+	text-align: center;
+}
+
+ul.ul-contacts > li:nth-child(even) {
+	background: rgb(226, 254, 255);
+}
+
+ul.ul-contacts > li:nth-child(odd) {
+	background: lightyellow;
+}
+
+ul.ul-contacts > li:hover {
+	background: black;
+	color: white;
+}
+
+ul.ul-tabs {
 	list-style-type: none;
 	display: flex;
 	width: 67%;
-	border: 1px solid black;
+	border: 2px solid black;
 	padding: 0px;
 	flex-direction: row;
 	margin: auto;
 }
 
-ul:hover {
+ul.ul-tabs:hover {
 	border: 2px solid darkblue;
 }
 
-ul > li {
+ul.ul-tabs > li {
 	padding-top: 2px;
 	padding-bottom: 2px;
 	flex-grow: 1;
+	flex-basis: 50%;
 }
 
-ul > li:hover {
+ul.ul-tabs > li:hover {
 	background-color: lightblue;
 	color: darkblue;
 	cursor: pointer;

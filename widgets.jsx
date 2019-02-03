@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Clock from "./frontend/clock";
 import Tabs from "./frontend/tabs";
 import Weather from "./frontend/weather";
+import Searchable from "./frontend/searchable";
 
 class Root extends React.Component {
 	constructor(props) {
@@ -25,6 +26,8 @@ class Root extends React.Component {
 				<Tabs tabs={tabs}/>
 				<br /><hr></hr>
 				<Weather />
+				<br /><hr />
+				<Searchable contacts={["Yener Tuz", "Peter Griffin", "Stewie Griffin", "Joe Swanson", "Cleveland Brown", "Quagmire", "Pawtucket Patt"]}/>
 			</div>
 		);
 	}
