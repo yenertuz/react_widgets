@@ -23,6 +23,11 @@ input[type=text] {
 	text-align: center;
 	width: 30%;
 	min-width: 300px;
+	border: 0.5px solid lightslategray;
+}
+
+input[type=text]:hover {
+	border: 1.45px solid black;
 }
 
 ul.ul-contacts {
