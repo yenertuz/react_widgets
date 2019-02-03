@@ -71,7 +71,7 @@ class Weather extends React.Component {
 		return (
 			<div>
 				<h2>Weather</h2>
-				<input type="text" onChange={this.changeInput} placeHolder="Enter zip or city"></input>
+				<input type="text" onChange={this.changeInput} placeholder="Enter zip or city"></input>
 				<br /> <br />
 				<div>{this.state.response}</div>
 			</div>
